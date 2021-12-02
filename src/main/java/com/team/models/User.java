@@ -2,12 +2,14 @@ package com.team.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
     private String userEmail;
     private String userPassword;
@@ -15,8 +17,9 @@ public class User {
     
     public User() {}
 
-	public User( String userEmail, String userPassword, String roles) {
+	public User(int userId, String userEmail, String userPassword, String roles) {
 		super();
+		this.userId = userId;
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
 		this.roles = roles;

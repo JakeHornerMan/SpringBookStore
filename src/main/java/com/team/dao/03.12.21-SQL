@@ -1,0 +1,34 @@
+ALTER TABLE Book MODIFY COLUMN book_id INT auto_increment
+
+ALTER TABLE Book MODIFY COLUMN order_id INT auto_increment
+
+
+INSERT INTO Book (author, description, price, title)
+VALUES("David Mitchell", "A collection of nesting stories within stories", 19.5, "Cloud Atlas");
+	
+INSERT INTO Book (author, description, price, title)
+VALUES("Ali Smith", "First Brexit novel", 23.5, "Autumn");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Chimamanda Ngozi Adichie", "A novel about the political and personal struggles of those caught up in the conflict and explores the brutal legacy of colonialism in Africa.", 17.45, "Half of a Yellow Sun");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Elena Ferrante ", "A novel documenting the ways misogyny and violence could determine lives, as well as the history of Italy in the late 20th century", 33.5, "My Brilliant Friend");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Philip Roth", "Alternative-world novel", 22.22, "The Plot Against America");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Barbara Ehrenreich", "In this modern classic of reportage, Ehrenreich chronicled her attempts to live on the minimum wage in three American states", 23.59, "Nickel and Dimed");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Sarah Waters", "A smart study of innocence and experience, and a sensuous lesbian love story – with a plot twist to make the reader gasp.", 23.42, "Fingersmith");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Elizabeth Kolbert", "The science journalist examines with clarity and memorable detail the current crisis of plant and animal loss caused by human civilisation ", 32.5, "The Sixth Extinction");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Jonathan Franzen", "A novel exploring both domestic and national conflict, this family saga is clever, funny and outrageously readable.", 23.7, "The Corrections");
+
+INSERT INTO Book (author, description, price, title)
+VALUES("Cormac McCarthy", "A father and his young son, each the others world entire, trawl across the ruins of post-apocalyptic America in this terrifying but tender story", 25.8, "The Road");

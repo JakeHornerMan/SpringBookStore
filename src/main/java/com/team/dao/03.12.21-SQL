@@ -1,7 +1,4 @@
-ALTER TABLE Book MODIFY COLUMN book_id INT auto_increment
-
-ALTER TABLE Book MODIFY COLUMN order_id INT auto_increment
-
+ALTER TABLE Book MODIFY COLUMN book_id INT auto_increment;
 
 INSERT INTO Book (author, description, price, title)
 VALUES("David Mitchell", "A collection of nesting stories within stories", 19.5, "Cloud Atlas");

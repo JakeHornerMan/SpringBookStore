@@ -1,0 +1,24 @@
+2/12/21
+Jake- Spring Security Login / Register
+Kat - Database Creation, Model Creation, Repository creation(with jpa methods) **dont create user table**
+
+USER
+userid
+email
+password
+address
+
+BOOK
+bookid
+title
+author
+description
+price
+
+ORDERS
+orderid
+userid
+bookid
+price
+address
+datetime

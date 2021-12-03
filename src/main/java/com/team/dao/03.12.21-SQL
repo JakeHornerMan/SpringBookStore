@@ -1,6 +1,6 @@
-ALTER TABLE Book MODIFY COLUMN book_id INT auto_increment
+ALTER TABLE Book MODIFY COLUMN book_id INT auto_increment;
 
-ALTER TABLE Book MODIFY COLUMN order_id INT auto_increment
+ALTER TABLE Orders MODIFY COLUMN order_id INT auto_increment;
 
 
 INSERT INTO Book (author, description, price, title)

@@ -18,20 +18,15 @@ public class Book {
 	private String description;
 	private double price;
 	
-	@ManyToOne //(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}  )
-    @JoinColumn(name = "orderId")
-	private Order order;
-	
 	public Book() {}
 
-	public Book(int bookId, String title, String author, String description, double price, Order order) {
+	public Book(int bookId, String title, String author, String description, double price) {
 		super();
 		this.bookId = bookId;
 		this.title = title;
 		this.author = author;
 		this.description = description;
 		this.price = price;
-		this.order = order;
 	}
 
 	public int getBookId() {
@@ -72,14 +67,6 @@ public class Book {
 
 	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
 	}
 
 }

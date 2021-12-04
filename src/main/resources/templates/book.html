@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 th:text="${book.title}">Book Title</h1><br>
+<h2 th:text="${book.author}">Author</h2><br>
+<h3 th:text="${book.description}">Description</h3><br>
+<h2 th:text="${book.price}">Price</h2><br>
+
+
+<!-- <form action="/addcart" method="post">
+	<td><a th:href="@{/book(bookId=${book.bookId})}" th:text="Add To Cart" class="button"></a></td>
+</form>  -->
+</body>
+</html>

@@ -16,7 +16,7 @@ public class BookService {
 	@Autowired
 	private BookRepo repo;
 	
-	public List<Book> getAll(){
+	public List<Book> getAllBooks(){
 		return repo.findAll();
 	}
 	

@@ -22,15 +22,12 @@ public class Order {
 	private double price;
 	private String address;
 	private Date datetime;
-	
-	@OneToMany( fetch =FetchType.EAGER,
-			mappedBy = "order")
-	public List<Book>bookList;
+	public String bookList;
 
 
 
 	public Order(int orderId, int userId, int bookId, double price, String address, Date datetime,
-			List<Book> bookList) {
+			String bookList) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
@@ -89,11 +86,11 @@ public class Order {
 		this.datetime = datetime;
 	}
 
-	public List<Book> getBookList() {
+	public String getBookList() {
 		return bookList;
 	}
 
-	public void setBookList(List<Book> bookList) {
+	public void setBookList(String bookList) {
 		this.bookList = bookList;
 	}
 

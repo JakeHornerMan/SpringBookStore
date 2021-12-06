@@ -1,32 +1,27 @@
 package com.team.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team.services.UserService;
 import com.team.models.User;
+import com.team.services.UserService;
 
 @Controller
-public class HomeController {
+public class AccountController {
 	
+	@Autowired
 	private UserService service;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView showLanding() {
-        return new ModelAndView("index");
-    }
-	
-	@GetMapping("/user")
-	public String user() {
-		return ("<h1>Welcome User</h1>");
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public ModelAndView user() {
+		return new ModelAndView("user");
 	}
 	
 	@GetMapping("/admin")
@@ -42,19 +37,13 @@ public class HomeController {
     }
 	
 	@RequestMapping(value = "/save_user", method = RequestMethod.POST)
-    public String saveUser(User user, @ModelAttribute("userEmail") String username,
-                           @ModelAttribute("userPassword") String email,
+    public ModelAndView saveUser(User user, @ModelAttribute("userEmail") String email,
+                           @ModelAttribute("userPassword") String password,
                            Model model) {
 
-        //SPRING SECURITY PASSWORD ENCODER
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getUserPassword());
-        user.setUserPassword(encodedPassword);
-
-
-        model.addAttribute("userEmail", username);
-        model.addAttribute("userPassword", email);
+        model.addAttribute("userEmail", email);
+        model.addAttribute("userPassword", password);
         service.save(user);
-        return "<h1>DONE!</h1>";
+        return new ModelAndView("index");
     }
 }

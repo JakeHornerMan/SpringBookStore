@@ -23,7 +23,10 @@ public class MyUserDetailsService implements UserDetailsService{
 		
 		Optional<User> user = userRepo.findByUserEmail(userEmail);
 		
-		user.orElseThrow(() -> new UsernameNotFoundException("Not found: "+ userEmail));
+		//user.orElseThrow(() -> new UsernameNotFoundException("Not found: "+ userEmail));
+		if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
 		
 		return user.map(MyUserDetails::new).get();
 	}

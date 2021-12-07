@@ -49,23 +49,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 //			.csrf().disable()
 //			.authorizeRequests().antMatchers("/login").permitAll()
-			.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin()
-			.loginPage("/login").permitAll()
-			.failureUrl("/login-error.html")
-			.and()
-			.logout().invalidateHttpSession(true)
-			.clearAuthentication(true)
-			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/index").permitAll();
-//			.and()
+			
 //			.authorizeRequests()
-//			.antMatchers("/admin").hasRole("ADMIN")
-//			.antMatchers("/user").hasAnyRole("ADMIN","USER")
-//			.antMatchers("/").permitAll()
-//			.antMatchers("/register").permitAll();
+//			.anyRequest().authenticated()
+//			.and()
+//			.formLogin()
+//			.loginPage("/login").permitAll()
+//			.failureUrl("/login-error.html")
+//			.and()
+//			.logout().invalidateHttpSession(true)
+//			.clearAuthentication(true)
+//			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//			.logoutSuccessUrl("/index").permitAll();
+//			.and()
+			.authorizeRequests()
+			.antMatchers("/admin").hasRole("ADMIN")
+			.antMatchers("/user").hasAnyRole("ADMIN","USER")
+			.antMatchers("/").permitAll()
+			.antMatchers("/register").permitAll();
 
 
 //		http.csrf().disable().authorizeRequests()

@@ -52,13 +52,13 @@ public class AccountController {
     }
 	
 	@RequestMapping(value = "/save_user", method = RequestMethod.POST)
-    public ModelAndView saveUser(User user, @ModelAttribute("userEmail") String email,
+    public String saveUser(User user, @ModelAttribute("userEmail") String email,
                            @ModelAttribute("userPassword") String password,
                            Model model) {
 
         model.addAttribute("userEmail", email);
         model.addAttribute("userPassword", password);
         service.encryptAndSave(user);
-        return new ModelAndView("index");
+        return "index";
     }
 }

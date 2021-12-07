@@ -2,6 +2,7 @@ package com.team.models;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -10,36 +11,43 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails{
 	
-	private String userEmail;
-	private String password;
-	private List<GrantedAuthority> authorities;
+//	private String userEmail;
+//	private String password;
+//	private List<GrantedAuthority> authorities;
+	
+	private User user;
 
 	public MyUserDetails() {}
 	
 	public MyUserDetails(User user) {
-		this.userEmail = user.getUserEmail();
-		this.password = user.getUserPassword();
-		/*this.authorities = Arrays.stream(user.getRoles().split(","))
-				.map(SimpleGrantedAuthority::new)
-				.collect(Collectors.toList());
-		*/
+		super();
+		this.user = user;
 	}
+
+//	public MyUserDetails(User user) {
+//		this.userEmail = user.getUserEmail();
+//		this.password = user.getUserPassword();
+//		/*this.authorities = Arrays.stream(user.getRoles().split(","))
+//				.map(SimpleGrantedAuthority::new)
+//				.collect(Collectors.toList());
+//		*/
+//	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+		return Collections.singleton(new SimpleGrantedAuthority("USER"));
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return password;
+		return user.getUserPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userEmail;
+		return user.getUserEmail();
 	}
 
 	@Override

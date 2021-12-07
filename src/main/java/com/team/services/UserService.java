@@ -1,6 +1,7 @@
 package com.team.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.team.repos.UserRepo;
@@ -15,4 +16,12 @@ public class UserService {
 	public void save(User user) {
         repo.save(user);
     }
+	
+	public void encryptAndSave(User user) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(user.getUserPassword());
+        user.setUserPassword(encodedPassword);
+        
+        save(user);
+	}
 }

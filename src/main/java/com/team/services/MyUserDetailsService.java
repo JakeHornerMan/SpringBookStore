@@ -16,19 +16,18 @@ import com.team.repos.UserRepo;
 public class MyUserDetailsService implements UserDetailsService{
 
 	@Autowired
-	UserRepo userRepo;
+	private UserRepo userRepo;
 	
 	@Override
 	public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
 		
-		Optional<User> user = userRepo.findByUserEmail(userEmail);
+		User user = userRepo.findByUserEmail(userEmail);
 		
-		//user.orElseThrow(() -> new UsernameNotFoundException("Not found: "+ userEmail));
 		if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
 		
-		return user.map(MyUserDetails::new).get();
+		return new MyUserDetails(user);
 	}
 
 }

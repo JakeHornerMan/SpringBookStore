@@ -24,6 +24,17 @@ public class AccountController {
 		return new ModelAndView("user");
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage() {
+		return "login";
+	}
+	
+	@RequestMapping("/login-error.html")
+	  public String loginError(Model model) {
+	    model.addAttribute("loginError", true);
+	    return "login";
+	}
+	
 	@GetMapping("/admin")
 	public String admin() {
 		return ("<h1>Welcome Admin</h1>");
@@ -43,7 +54,7 @@ public class AccountController {
 
         model.addAttribute("userEmail", email);
         model.addAttribute("userPassword", password);
-        service.save(user);
+        service.encryptAndSave(user);
         return new ModelAndView("index");
     }
 }

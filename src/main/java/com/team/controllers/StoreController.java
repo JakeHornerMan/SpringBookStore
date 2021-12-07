@@ -54,7 +54,6 @@ public class StoreController {
 	@PostMapping(value = "/addtocart")
 	public String addToCart(@RequestParam("bookId") int bookId, Model model) {
 		
-		
 		orderSErvice.addToCart(bookId);
 		return "add_success";
 	   

@@ -59,6 +59,6 @@ public class AccountController {
         model.addAttribute("userEmail", email);
         model.addAttribute("userPassword", password);
         service.encryptAndSave(user);
-        return "index";
+        return "login";
     }
 }

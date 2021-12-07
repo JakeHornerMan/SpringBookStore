@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 
 		http
-//			.csrf().disable()
+			.csrf().disable()
 //			.authorizeRequests().antMatchers("/login").permitAll()
 			
 //			.authorizeRequests()
@@ -67,9 +67,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.antMatchers("/user").hasAnyRole("ADMIN","USER")
 			.antMatchers("/").permitAll()
 			.antMatchers("/register").permitAll()
+			.antMatchers("/cart").permitAll()
 			.and()
 			.formLogin()
-			.loginPage("/login").permitAll();
+			.loginPage("/login").permitAll()
+			.and()
+			.logout().invalidateHttpSession(true)
+			.clearAuthentication(true)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/index").permitAll();
 
 
 //		http.csrf().disable().authorizeRequests()

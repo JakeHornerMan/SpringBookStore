@@ -36,7 +36,7 @@ public class StoreController {
 		return mav;
     }
 	
-	@RequestMapping(value = "/book")
+	@RequestMapping(value = "/book", method = RequestMethod.GET)
 	public ModelAndView getAttendees(@RequestParam("bookId") int bookId, Model model) {
 		
 		Book book = bookservice.getOne(bookId);
@@ -51,21 +51,18 @@ public class StoreController {
 	}
 	
 	
-	@PostMapping(value = "/book")
+	@PostMapping(value = "/addtocart")
 	public String addToCart(@RequestParam("bookId") int bookId, Model model) {
 		
 		
-		if(orderSErvice.addToCart(bookId)) {
-		  return "add_success";
-	   }
-		else {
-			return "redirect:/index";
-		}
+		orderSErvice.addToCart(bookId);
+		return "add_success";
+	   
 	} 
 	
 	
 	
-	@RequestMapping(value = "/viewCart", method = RequestMethod.GET)
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public ModelAndView viewCart() {
 		
 		ModelAndView mav = new ModelAndView();

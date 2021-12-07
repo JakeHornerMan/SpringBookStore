@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.models.User;
+import com.team.services.OrderService;
 import com.team.services.UserService;
 
 @Controller
@@ -18,6 +19,9 @@ public class AccountController {
 	
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public ModelAndView user() {

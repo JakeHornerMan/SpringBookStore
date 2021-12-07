@@ -21,10 +21,23 @@
                 <tbody>
                 <tr th:each="book: ${listBooks}">
                     <td th:text="${book.title}">Event Title</td>
-                    <form action="/book" method="post">
-                    	<td><a th:href="@{/book(bookId=${book.bookId})}" th:text="View" class="button"></a></td>
-                    </form>
+                    
+                    	<td><a th:href="@{/book(bookId=${book.bookId})}" th:text="View" class="button">Add to cart</a></td>
+                  <!--  <td><a th:href="@{/addToCart(bookId=${book.bookId})}" th:text="AddToCart" class="button"></a></td>-->
+                  <td>
+                  <form action="/book" method="post">
+                 
+                     <input name="bookId" type="hidden" th:value="${book.bookId}"/>
+                     <input type="submit" value = "Add to Cart"/>
+                   </form>
+                   </td>
                 </tr>
+                
+                <tr>
+                
+                   <td><a th:href="@{/viewCart}" th:text="ViewCart" class="button"></a></td>
+                </tr>
+ 
                 </tbody>
             </table>
             

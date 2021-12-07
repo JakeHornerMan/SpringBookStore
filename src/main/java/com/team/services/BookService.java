@@ -1,5 +1,6 @@
 package com.team.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,14 @@ public class BookService {
 	@Autowired
 	private BookRepo repo;
 	
+	@Autowired
+	OrderService orderService;
+	
+	List<Book> books;
+	
 	public List<Book> getAllBooks(){
-		return repo.findAll();
+		books = repo.findAll();
+		return books;
 	}
 	
 	public void saveOne(Book b) {
@@ -30,6 +37,28 @@ public class BookService {
 	
 	public void deleteOne(int id) {
 		repo.deleteById(id);
+	}
+	
+	public List<Book> getCartBooks(){
+		
+		List<Integer> bookIds = orderService.getBookIdsFromCart();
+				
+		List<Book> cartBooks = new ArrayList<>();
+		
+		
+		for(Book book : books) {
+			
+			for(Integer bookId : bookIds) {
+				
+				if(book.getBookId() == bookId) {
+					cartBooks.add(book);
+				}
+			}
+		}
+		
+		
+		return cartBooks;
+		
 	}
 
 }

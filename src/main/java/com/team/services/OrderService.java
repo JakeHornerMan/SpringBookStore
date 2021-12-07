@@ -1,5 +1,6 @@
 package com.team.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,32 @@ public class OrderService {
 	@Autowired
 	private OrderRepo repo;
 	
+	List<Order> cart = new ArrayList<Order>();
+	
+	List<Integer> cartWithBookIds = new ArrayList<>();
+	
+	public void addToCart(Order o) {
+		cart.add(o);
+	}
+	
+	
+	
+	public boolean addToCart(int bookId) {
+		return cartWithBookIds.add(bookId);
+	}
+	
+	public List<Order> getCart() {
+		return cart;
+	}
+	
+	public void deleteCartItem(Order o) {
+		cart.remove(o);
+	}
+	
+	public void clearCart() {
+		cart.clear();
+	}
+	
 	public List<Order> getAll(){
 		return repo.findAll();
 	}
@@ -30,6 +57,10 @@ public class OrderService {
 	
 	public void deleteOne(int id) {
 		repo.deleteById(id);
+	}
+	
+	public List<Integer> getBookIdsFromCart(){
+		return cartWithBookIds;
 	}
 	 
 

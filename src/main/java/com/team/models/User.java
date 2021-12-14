@@ -13,15 +13,17 @@ public class User {
     private String userEmail;
     private String userPassword;
     private String roles;
+    private boolean enabled;
     
     public User() {}
 
-	public User(int userId, String userEmail, String userPassword, String roles) {
+	public User(int userId, String userEmail, String userPassword, String roles, boolean enabled) {
 		super();
 		this.userId = userId;
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
 		this.roles = roles;
+		this.enabled = false;
 	}
 
 	public int getUserId() {

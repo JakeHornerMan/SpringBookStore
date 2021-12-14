@@ -17,11 +17,12 @@ public class UserService {
         repo.save(user);
     }
 	
-	public void encryptAndSave(User user) {
+	public User encryptAndSave(User user) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getUserPassword());
         user.setUserPassword(encodedPassword);
         
         save(user);
+        return user;
 	}
 }
